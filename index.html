@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>I’m Really Sorry, My Best Friend</title>
     <style>
-        /* General Styles */
         body {
             font-family: 'Georgia', serif;
             margin: 0;
@@ -16,7 +15,6 @@
             scroll-behavior: smooth;
         }
 
-        /* Hero Section */
         .hero {
             height: 100vh;
             display: flex;
@@ -43,7 +41,6 @@
             animation: fadeIn 3s ease-in-out;
         }
 
-        /* Floating Hearts Animation */
         .floating-hearts {
             position: absolute;
             top: 0;
@@ -60,16 +57,11 @@
             animation: float 6s linear infinite;
         }
 
-        .heart:nth-child(odd) {
-            animation-delay: -2s;
-        }
-
         @keyframes float {
             0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
             100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
         }
 
-        /* Sections */
         section {
             padding: 60px 20px;
             max-width: 800px;
@@ -84,7 +76,6 @@
             font-family: 'Brush Script MT', cursive;
         }
 
-        /* Apology Letter */
         .letter {
             background: rgba(255, 255, 255, 0.8);
             padding: 30px;
@@ -95,7 +86,6 @@
             animation: slideUp 1s ease-out;
         }
 
-        /* Reasons List */
         .reasons ul {
             list-style: none;
             padding: 0;
@@ -114,7 +104,6 @@
             transform: scale(1.05);
         }
 
-        /* Forgive Me Button */
         .forgive-btn {
             background: linear-gradient(45deg, #ff69b4, #ffb6c1);
             color: white;
@@ -140,20 +129,6 @@
             animation: fadeIn 1s ease-in-out;
         }
 
-        /* Music Toggle */
-        .music-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.8);
-            border: none;
-            padding: 10px;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -164,7 +139,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Mobile Responsiveness */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2rem; }
             .hero p { font-size: 1.2rem; }
@@ -174,51 +148,53 @@
     </style>
 </head>
 <body>
-    <!-- Background Music -->
-    <audio id="bg-music" loop>
-        <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav"> <!-- Placeholder: Replace with a soft instrumental MP3 URL, e.g., a free public domain track -->
-        Your browser does not support the audio element.
-    </audio>
-    <button class="music-toggle" onclick="toggleMusic()">🎵</button>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="floating-hearts" id="hearts"></div>
         <h1>I’m Really Sorry, My Best Friend</h1>
-        <p>I messed up, and I can't stop thinking about how much I've hurt you. You mean the world to me, and I hope you can find it in your heart to forgive me. Let's heal this together.</p>
+        <p>
+            I messed up, and I can't stop thinking about how much I've hurt you.
+            You mean the world to me, and I hope you can find it in your heart to forgive me.
+        </p>
     </section>
 
     <!-- Apology Letter -->
-    <section id="letter">
+    <section>
         <h2>My Apology Letter</h2>
         <div class="letter">
-            <p>Dear [koteswar],</p>
-            <p>Words can't fully express how sorry I am for what I did. I let my emotions get the better of me, and in doing so, I hurt the person who matters most to me—you. Our friendship has been a light in my life, filled with laughter, support, and unforgettable moments. I regret every second of the pain I've caused and promise to do better. I value you more than anything, and I hope we can move forward stronger than before.</p>
-            <p>With all my love,<br>[hasini]</p>
+            <p>Dear [Koteswar],</p>
+            <p>
+                Words can't fully express how sorry I am for what I did.
+                I hurt the person who matters most to me—you.
+                I value our friendship more than anything and promise to do better.
+            </p>
+            <p>With all my heart,<br>[hasini]</p>
         </div>
     </section>
 
-    <!-- Reasons Why You Matter -->
+    <!-- Reasons -->
     <section class="reasons">
-        <h2>Reasons Why You Matter to Me</h2>
+        <h2>Why You Matter to Me</h2>
         <ul>
-            <li>You've always been there for me, through thick and thin, with unwavering support.</li>
-            <li>Your laughter lights up my darkest days and makes everything feel possible.</li>
-            <li>You understand me in ways no one else does, and that connection is priceless.</li>
-            <li>Your kindness and compassion inspire me to be a better person every day.</li>
-            <li>Our memories together are my most cherished treasures, and I can't imagine life without you.</li>
+            <li>You’ve always stood by me when I needed someone.</li>
+            <li>Your laughter makes everything lighter.</li>
+            <li>You understand me like no one else.</li>
+            <li>You inspire me to be better.</li>
+            <li>Our memories mean everything to me.</li>
         </ul>
     </section>
 
-    <!-- Forgive Me Button -->
+    <!-- Forgive Button -->
     <section>
         <h2>Will You Forgive Me?</h2>
         <button class="forgive-btn" onclick="showMessage()">Forgive Me?</button>
-        <div class="message" id="forgive-message">Thank you from the bottom of my heart. I love you endlessly! 💖</div>
+        <div class="message" id="forgive-message">
+            Thank you for giving me another chance 💖
+        </div>
     </section>
 
     <script>
-        // Generate Floating Hearts
         function createHearts() {
             const heartsContainer = document.getElementById('hearts');
             for (let i = 0; i < 20; i++) {
@@ -232,24 +208,12 @@
         }
         createHearts();
 
-        // Toggle Music
-        function toggleMusic() {
-            const music = document.getElementById('bg-music');
-            if (music.paused) {
-                music.play();
-            } else {
-                music.pause();
-            }
-        }
-
-        // Show Forgive Message
         function showMessage() {
-            const message = document.getElementById('forgive-message');
-            message.style.display = 'block';
+            document.getElementById('forgive-message').style.display = 'block';
         }
     </script>
+
 </body>
 </html>
-         
    
        
