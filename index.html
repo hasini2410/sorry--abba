@@ -3,136 +3,253 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sorry, Bestie</title>
+    <title>I’m Really Sorry, My Best Friend</title>
     <style>
+        /* General Styles */
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #ffe6f7, #e6f7ff, #f7e6ff);
-            color: #5a5a5a;
+            font-family: 'Georgia', serif;
             margin: 0;
             padding: 0;
+            background: linear-gradient(135deg, #ffe6f0, #e6f7ff, #f0f8e6);
+            color: #4a4a4a;
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
-        h1 {
-            font-size: 3em;
-            color: #ff6b9d;
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #d2691e;
             margin-bottom: 20px;
-            animation: fadeIn 2s ease-in;
+            animation: fadeIn 2s ease-in-out;
         }
-        .section {
-            margin: 40px 0;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            animation: slideUp 1s ease-out;
-        }
-        .apology {
-            font-size: 1.2em;
+
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 600px;
             line-height: 1.6;
-            color: #7a7a7a;
+            animation: fadeIn 3s ease-in-out;
         }
-        .why {
-            font-size: 1.1em;
-            line-height: 1.5;
-        }
-        .memory {
-            font-style: italic;
-            font-size: 1.1em;
-            color: #9b59b6;
-        }
-        .button {
-            display: inline-block;
-            padding: 15px 30px;
-            background: #ffb3ba;
-            color: white;
-            border: none;
-            border-radius: 25px;
-            font-size: 1.2em;
-            cursor: pointer;
-            transition: background 0.3s ease;
-            animation: bounce 2s infinite;
-        }
-        .button:hover {
-            background: #ff8a9a;
-        }
-        .hearts {
+
+        /* Floating Hearts Animation */
+        .floating-hearts {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            overflow: hidden;
         }
+
         .heart {
             position: absolute;
-            color: #ff6b9d;
-            font-size: 2em;
+            font-size: 2rem;
+            color: #ffb6c1;
             animation: float 6s linear infinite;
         }
-        .heart:nth-child(1) { left: 10%; animation-delay: 0s; }
-        .heart:nth-child(2) { left: 20%; animation-delay: 1s; }
-        .heart:nth-child(3) { left: 30%; animation-delay: 2s; }
-        .heart:nth-child(4) { left: 40%; animation-delay: 3s; }
-        .heart:nth-child(5) { left: 50%; animation-delay: 4s; }
-        .heart:nth-child(6) { left: 60%; animation-delay: 5s; }
-        .heart:nth-child(7) { left: 70%; animation-delay: 6s; }
-        .heart:nth-child(8) { left: 80%; animation-delay: 7s; }
-        .heart:nth-child(9) { left: 90%; animation-delay: 8s; }
-        .heart:nth-child(10) { left: 100%; animation-delay: 9s; }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .heart:nth-child(odd) {
+            animation-delay: -2s;
         }
-        @keyframes slideUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
+
         @keyframes float {
-            0% { transform: translateY(100vh); opacity: 1; }
-            100% { transform: translateY(-10vh); opacity: 0; }
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
         }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
+
+        /* Sections */
+        section {
+            padding: 60px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: #8b4513;
+            margin-bottom: 30px;
+            font-family: 'Brush Script MT', cursive;
+        }
+
+        /* Apology Letter */
+        .letter {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-style: italic;
+            line-height: 1.8;
+            animation: slideUp 1s ease-out;
+        }
+
+        /* Reasons List */
+        .reasons ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .reasons li {
+            background: rgba(255, 228, 196, 0.8);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .reasons li:hover {
+            transform: scale(1.05);
+        }
+
+        /* Forgive Me Button */
+        .forgive-btn {
+            background: linear-gradient(45deg, #ff69b4, #ffb6c1);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .forgive-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .message {
+            display: none;
+            margin-top: 20px;
+            font-size: 1.5rem;
+            color: #d2691e;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Music Toggle */
+        .music-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1.2rem; }
+            h2 { font-size: 2rem; }
+            .letter { padding: 20px; }
         }
     </style>
 </head>
 <body>
-    <div class="hearts">
-        <div class="heart">♥</div>
-        <div class="heart">♥</div>
-        <div class="heart">♥</div>
-        <div class="heart">♥</div>
-        <div class="heart">♥</div>
-        <div class="heart">♥</div>
-        <div class="heart">♥</div>
-        <div class="heart">♥</div>
-        <div class="heart">♥</div>
-        <div class="heart">♥</div>
-    </div>
-    <div class="container">
-        <h1>Sorry, Bestie</h1>
-        <div class="section">
-            <p class="apology">I'm really sorry for what I did. I know I messed up, and I feel awful about it. You mean the world to me, and I hate that I hurt you.</p>
+    <!-- Background Music -->
+    <audio id="bg-music" loop>
+        <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav"> <!-- Placeholder: Replace with a soft instrumental MP3 URL, e.g., a free public domain track -->
+        Your browser does not support the audio element.
+    </audio>
+    <button class="music-toggle" onclick="toggleMusic()">🎵</button>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="floating-hearts" id="hearts"></div>
+        <h1>I’m Really Sorry, My Best Friend</h1>
+        <p>I messed up, and I can't stop thinking about how much I've hurt you. You mean the world to me, and I hope you can find it in your heart to forgive me. Let's heal this together.</p>
+    </section>
+
+    <!-- Apology Letter -->
+    <section id="letter">
+        <h2>My Apology Letter</h2>
+        <div class="letter">
+            <p>Dear [Friend's Name],</p>
+            <p>Words can't fully express how sorry I am for what I did. I let my emotions get the better of me, and in doing so, I hurt the person who matters most to me—you. Our friendship has been a light in my life, filled with laughter, support, and unforgettable moments. I regret every second of the pain I've caused and promise to do better. I value you more than anything, and I hope we can move forward stronger than before.</p>
+            <p>With all my love,<br>[hasini]</p>
         </div>
-        <div class="section">
-            <p class="why">Why did I do it? Honestly, I wasn't thinking straight. Stress got the better of me, and I made a stupid decision. But that's no excuse – I should have handled it better.</p>
-        </div>
-        <div class="section">
-            <p class="memory">Remember that time we [insert a fun memory here]? That was one of the best days ever. I don't want to lose our friendship over this.</p>
-        </div>
-        <button class="button">Forgive Me?</button>
-    </div>
+    </section>
+
+    <!-- Reasons Why You Matter -->
+    <section class="reasons">
+        <h2>Reasons Why You Matter to Me</h2>
+        <ul>
+            <li>You've always been there for me, through thick and thin, with unwavering support.</li>
+            <li>Your laughter lights up my darkest days and makes everything feel possible.</li>
+            <li>You understand me in ways no one else does, and that connection is priceless.</li>
+            <li>Your kindness and compassion inspire me to be a better person every day.</li>
+            <li>Our memories together are my most cherished treasures, and I can't imagine life without you.</li>
+        </ul>
+    </section>
+
+    <!-- Forgive Me Button -->
+    <section>
+        <h2>Will You Forgive Me?</h2>
+        <button class="forgive-btn" onclick="showMessage()">Forgive Me?</button>
+        <div class="message" id="forgive-message">Thank you from the bottom of my heart. I love you endlessly! 💖</div>
+    </section>
+
+    <script>
+        // Generate Floating Hearts
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                heartsContainer.appendChild(heart);
+            }
+        }
+        createHearts();
+
+        // Toggle Music
+        function toggleMusic() {
+            const music = document.getElementById('bg-music');
+            if (music.paused) {
+                music.play();
+            } else {
+                music.pause();
+            }
+        }
+
+        // Show Forgive Message
+        function showMessage() {
+            const message = document.getElementById('forgive-message');
+            message.style.display = 'block';
+        }
+    </script>
 </body>
 </html>
+         
+   
+       
